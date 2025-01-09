@@ -1,44 +1,21 @@
-import { Layout, Menu, MenuProps } from "antd";
+import { Layout } from "antd";
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Header, Content, Footer } = Layout;
 
-import {
-  UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
-} from "@ant-design/icons";
-import { Children, createElement } from "react";
+// import {
+//   UploadOutlined,
+//   UserOutlined,
+//   VideoCameraOutlined,
+// } from "@ant-design/icons";
+// import { Children, createElement } from "react";
+// import { NavLink, Outlet } from "react-router";
 import { Outlet } from "react-router";
-
-const items: MenuProps["items"] = [
-  {
-    key: "1",
-    label: "Dashboard",
-  },
-  {
-    key: "2",
-    label: "Profile",
-  },
-  {
-    key: "3",
-    label: "Usermanagement",
-    children: [
-      {
-        key: "3a",
-        label: "Create Admin",
-      },
-      {
-        key: "3b",
-        label: "Create Studemt",
-      },
-    ],
-  },
-];
+import Sidebar from "./Sidebar/Sidebar";
 
 const MainLayout = () => {
   return (
     <Layout style={{ height: "100vh" }}>
-      <Sider
+      {/* <Sider
         breakpoint="lg"
         collapsedWidth="0"
         onBreakpoint={(broken) => {
@@ -65,9 +42,10 @@ const MainLayout = () => {
           theme="dark"
           mode="inline"
           defaultSelectedKeys={["4"]}
-          items={items}
+          items={sidebarItems}
         />
-      </Sider>
+      </Sider> */}
+      <Sidebar />
       <Layout>
         <Header style={{ padding: 0 }} />
         <Content style={{ margin: "24px 16px 0" }}>

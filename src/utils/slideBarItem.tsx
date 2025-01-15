@@ -53,6 +53,12 @@ export const getSideBarItems = (role: string) => {
           key: "3web",
           label: <NavLink to={"/admin/create-student"}>Create Student</NavLink>,
         },
+        {
+          key: "3webe",
+          label: (
+            <NavLink to={"/admin/academic-semester"}>Academic Semester</NavLink>
+          ),
+        },
       ],
     },
   ];

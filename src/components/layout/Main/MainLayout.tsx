@@ -1,6 +1,6 @@
-import { Layout } from "antd";
+import { Button, Layout } from "antd";
 
-const { Header, Content, Footer } = Layout;
+const { Content, Footer } = Layout;
 
 // import {
 //   UploadOutlined,
@@ -9,10 +9,12 @@ const { Header, Content, Footer } = Layout;
 // } from "@ant-design/icons";
 // import { Children, createElement } from "react";
 // import { NavLink, Outlet } from "react-router";
-import { Outlet } from "react-router";
+import { Outlet, useNavigate } from "react-router";
 import Sidebar from "./Sidebar/Sidebar";
+import Header from "../../Header/Header";
 
 const MainLayout = () => {
+  const navigate = useNavigate();
   return (
     <Layout style={{ height: "100vh" }}>
       {/* <Sider
@@ -47,7 +49,7 @@ const MainLayout = () => {
       </Sider> */}
       <Sidebar />
       <Layout>
-        <Header style={{ padding: 0 }} />
+        <Header />
         <Content style={{ margin: "24px 16px 0" }}>
           <div
             style={{
@@ -56,6 +58,7 @@ const MainLayout = () => {
             }}
           >
             <h1>Main Page</h1>
+            <Button onClick={() => navigate("/login")}>Login Page</Button>
             <Outlet />
           </div>
         </Content>

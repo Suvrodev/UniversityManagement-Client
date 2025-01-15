@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { TUser } from "../../../utils/Type/Type";
 
 type TAuthState = {
-  user: null | object;
+  user: null | TUser;
   token: null | string;
 };
 

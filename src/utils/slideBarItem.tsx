@@ -59,6 +59,14 @@ export const getSideBarItems = (role: string) => {
             <NavLink to={"/admin/academic-semester"}>Academic Semester</NavLink>
           ),
         },
+        {
+          key: "3webwe",
+          label: (
+            <NavLink to={"/admin/create-academic-semester"}>
+              Academic Semester
+            </NavLink>
+          ),
+        },
       ],
     },
   ];

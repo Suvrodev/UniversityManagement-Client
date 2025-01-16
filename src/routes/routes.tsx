@@ -9,6 +9,7 @@ import CreateStudent from "../pages/Admin/CreateStudent";
 import CreateAdmin from "../pages/Admin/CreateAdmin";
 import CreateFaculty from "../pages/Admin/CreateFaculty";
 import AcademicSemester from "../pages/Admin/AcademicManagement/AcademicSemester";
+import CreateAcademicSemester from "../pages/Admin/AcademicManagement/CreateAcademicSemester";
 // import AdminLayout from "../components/layout/Admin/AdminLayout";
 
 export const router = createBrowserRouter([
@@ -53,6 +54,10 @@ export const router = createBrowserRouter([
       {
         path: "academic-semester",
         element: <AcademicSemester />,
+      },
+      {
+        path: "create-academic-semester",
+        element: <CreateAcademicSemester />,
       },
     ],
   },

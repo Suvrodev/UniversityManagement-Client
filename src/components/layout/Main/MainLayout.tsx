@@ -50,7 +50,7 @@ const MainLayout = () => {
       <Layout>
         <Header />
         <Content>
-          <div className="px-2 py-4">
+          <div className="px-2 py-4 h-[100vh]">
             <Outlet />
           </div>
         </Content>

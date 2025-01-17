@@ -1,3 +1,4 @@
+import Loading from "../../../../components/Loading/Loading";
 import { useGetAllSemestersQuery } from "../../../../redux/features/Admin/AcademicManagementApi";
 import { TSemester } from "../../../../utils/Type/Type";
 
@@ -8,11 +9,7 @@ const AcademicSemester = () => {
   console.log("Semester Data: ", semesterData);
 
   if (isLoading) {
-    return (
-      <div className="w-[100%] h-[100%] flex items-center justify-center">
-        <span className="loading loading-bars loading-lg"></span>;
-      </div>
-    );
+    return <Loading />;
   }
   return (
     <div>

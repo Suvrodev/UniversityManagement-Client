@@ -1,3 +1,4 @@
+import Loading from "../../../../components/Loading/Loading";
 import { useGetAllAcademicFacultyQuery } from "../../../../redux/features/Admin/AcademicManagementApi";
 
 const AcademicFaculty = () => {
@@ -5,11 +6,7 @@ const AcademicFaculty = () => {
   const allFaculty = data?.data;
   console.log("Academic Faculty: ", allFaculty);
   if (isLoading) {
-    return (
-      <div className="w-full h-[100vh] flex items-center justify-center">
-        <p>Loading</p>
-      </div>
-    );
+    return <Loading />;
   }
   return (
     <div className="h-[100vh]">

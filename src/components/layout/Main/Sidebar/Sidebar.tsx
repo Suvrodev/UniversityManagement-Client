@@ -1,6 +1,6 @@
 import { Layout, Menu } from "antd";
 
-import { getSideBarItems } from "../../../../utils/slideBarItem";
+import { useGetSideBarItems } from "../../../../utils/slideBarItem";
 
 const { Sider } = Layout;
 
@@ -33,7 +33,7 @@ const Sidebar = () => {
         theme="dark"
         mode="inline"
         defaultSelectedKeys={["4"]}
-        items={getSideBarItems("student")}
+        items={useGetSideBarItems()}
       />
     </Sider>
   );

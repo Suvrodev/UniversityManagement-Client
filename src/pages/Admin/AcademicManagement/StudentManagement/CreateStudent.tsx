@@ -7,15 +7,22 @@ import "./CreateStudent.css";
 import { bloodGroups, genders } from "../../../../utils/Arrays/Arrays";
 import { toast } from "sonner";
 import { sonarId } from "../../../../utils/sonarId";
-import { useGetAllSemestersQuery } from "../../../../redux/features/Admin/AcademicManagementApi";
+import {
+  useGetAcademicDepartmentQuery,
+  useGetAllSemestersQuery,
+} from "../../../../redux/features/Admin/AcademicManagementApi";
 import { TSemester } from "../../../../utils/Type/Type";
+import Loading from "../../../../components/Loading/Loading";
+import { useAddStudentMutation } from "../../../../redux/features/Admin/userManagementApi";
 
 type ValuePiece = Date | null;
 type Value = ValuePiece | [ValuePiece, ValuePiece];
 
 const CreateStudent = () => {
+  const [add] = useAddStudentMutation();
+
   ///Admission Semester
-  const { data: allSemesterData, isLoading } =
+  const { data: allSemesterData, isLoading: semesterLoading } =
     useGetAllSemestersQuery(undefined);
   const allSemester = allSemesterData?.data;
 
@@ -27,8 +34,22 @@ const CreateStudent = () => {
     console.log("Select Semester: ", semester);
   };
 
+  //Academic Department
+  const { data, isLoading: departmentLoading } =
+    useGetAcademicDepartmentQuery(undefined);
+  const allDepartments = data?.data;
+  // console.log("All Department: ", allDepartments);
+
+  const [admissionDepartment, setAdmissionDepartment] = useState("");
+
+  const handleAdmissionDepartment = (event: ChangeEvent<HTMLSelectElement>) => {
+    const department = event.target.value;
+    setAdmissionDepartment(department);
+    console.log("Select Department: ", department);
+  };
+
   ///Gender
-  const [gender, setGender] = useState("Male");
+  const [gender, setGender] = useState("male");
   const handleGender = (event: ChangeEvent<HTMLSelectElement>) => {
     setGender(event.target.value);
   };
@@ -42,60 +63,71 @@ const CreateStudent = () => {
     setBloodGroup(event.target.value);
   };
 
-  const hanldeCreateStudent = (event: FormEvent<HTMLFormElement>) => {
+  const hanldeCreateStudent = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const Form = event.target as HTMLFormElement;
 
     if (!gender) {
       toast.error("Gender Must Be Needed", { id: sonarId });
+      return;
     }
     if (!bloodGroup) {
       toast.error("Blood Group Must be Needed", { id: sonarId });
+      return;
     }
     if (!admissionSemester) {
       toast.error("Admission Semester Must be needed", { id: sonarId });
+      return;
     }
+    if (!admissionDepartment) {
+      toast.error("Admission Department Must be needed", { id: sonarId });
+      return;
+    }
+
     const formData = {
-      name: {
-        firstName: Form.firstName.value,
-        middleName: Form.midName.value,
-        lastName: Form.lastName.value,
-      },
-      gender,
-      dateOfBirth: dob,
-      bloodGroup,
-      email: Form.email.value,
-      contactNo: Form.contact.value,
-      emergencyContactNo: Form.emergencyContact.value,
-      presentAddress: Form.presentAddress.value,
-      permanentAddress: Form.permanentAddress.value,
-      guardian: {
-        fatherName: Form.fatherName.value,
-        fatherOccupation: Form.fatherOccupation.value,
-        fatherContactNo: Form.fatherContact.value,
-        motherName: Form.motherName.value,
-        motherOccupation: Form.motherOccupation.value,
-        motherContactNo: Form.motherContact.value,
-      },
-      localGuardian: {
-        name: Form.localGuardianName.value,
-        occupation: Form.localGuardianOccupation.value,
-        contactNo: Form.localGuardianContact.value,
-        address: Form.localGuardianAddress.value,
+      student: {
+        Password: Form.password.value,
+        admissionSemester,
+        academicDepartment: admissionDepartment,
+        name: {
+          firstName: Form.firstName.value,
+          middleName: Form.midName.value,
+          lastName: Form.lastName.value,
+        },
+        gender,
+        dateOfBirth: dob,
+        bloodGroup,
+        email: Form.email.value,
+        contactNo: Form.contact.value,
+        emergencyContactNo: Form.emergencyContact.value,
+        presentAddress: Form.presentAddress.value,
+        permanentAddress: Form.permanentAddress.value,
+        guardian: {
+          fatherName: Form.fatherName.value,
+          fatherOccupation: Form.fatherOccupation.value,
+          fatherContactNo: Form.fatherContact.value,
+          motherName: Form.motherName.value,
+          motherOccupation: Form.motherOccupation.value,
+          motherContactNo: Form.motherContact.value,
+        },
+        localGuardian: {
+          name: Form.localGuardianName.value,
+          occupation: Form.localGuardianOccupation.value,
+          contactNo: Form.localGuardianContact.value,
+          address: Form.localGuardianAddress.value,
+        },
       },
     };
     console.log("Data: ", formData);
+    toast.loading("Inserting student", { id: sonarId });
+    const res = await add(formData).unwrap();
+    if (res?.success) {
+      toast.success("Student Created Successfully", { id: sonarId });
+    }
   };
 
-  if (isLoading) {
-    return (
-      <div
-        className="flex items-center justify-center"
-        style={{ height: "100vh" }}
-      >
-        <span className="loading loading-bars loading-lg"></span>
-      </div>
-    );
+  if (semesterLoading || departmentLoading) {
+    return <Loading />;
   }
   return (
     <div>
@@ -201,13 +233,37 @@ const CreateStudent = () => {
                 ))}
               </select>
             </div>
-
-            <div className="">
-              <p>Date of Birth</p>
-              <DatePicker
-                onChange={onChange}
-                value={dob}
-                className="dateStyle"
+            {/* Admission Department */}
+            <div>
+              <p>Admission Department</p>
+              <select
+                name=""
+                onChange={handleAdmissionDepartment}
+                className="inputBoxForCreateStudent"
+                value={admissionDepartment}
+              >
+                <option value="" disabled>
+                  Click One
+                </option>
+                {allDepartments?.map(
+                  (data: { _id: string; name: string }, idx: number) => (
+                    <option key={idx} value={data?._id}>
+                      {data?.name}
+                    </option>
+                  )
+                )}
+              </select>
+            </div>
+            {/* Password */}
+            <div>
+              <p>Password</p>
+              <input
+                type="password"
+                name="password"
+                defaultValue="123456"
+                required
+                className="inputBoxForCreateStudent "
+                id=""
               />
             </div>
           </div>

@@ -33,6 +33,7 @@ const CreateAcademicFaculty = () => {
             name="facultyName"
             id=""
             className=" w-full bg-transparent px-4 outline-none rounded-lg py-2 border-2 rouned-md"
+            required
           />
           <div className="my-4">
             <button className="btn btn-primary text-white">Submit</button>

@@ -14,6 +14,9 @@ import CreateAcademicDepartment from "../pages/Admin/AcademicManagement/Academic
 import AcademicDepartment from "../pages/Admin/AcademicManagement/AcademicDepartment/AcademicDepartment";
 import CreateAcademicFaculty from "../pages/Admin/AcademicManagement/AcademicFaculty/CreateAcademicFaculty";
 import AcademicFaculty from "../pages/Admin/AcademicManagement/AcademicFaculty/AcademicFaculty";
+import Loading from "../components/Loading/Loading";
+import GetStudents from "../pages/Admin/AcademicManagement/StudentManagement/GetStudents";
+import StudentDetail from "../pages/Admin/AcademicManagement/StudentManagement/StudentDetail/StudentDetail";
 // import AdminLayout from "../components/layout/Admin/AdminLayout";
 
 export const router = createBrowserRouter([
@@ -46,6 +49,14 @@ export const router = createBrowserRouter([
       {
         path: "create-student",
         element: <CreateStudent />,
+      },
+      {
+        path: "get-student",
+        element: <GetStudents />,
+      },
+      {
+        path: "student-detail/:_id",
+        element: <StudentDetail />,
       },
       {
         path: "create-admin",
@@ -88,5 +99,9 @@ export const router = createBrowserRouter([
   {
     path: "register",
     element: <Registration />,
+  },
+  {
+    path: "loading",
+    element: <Loading />,
   },
 ]);

@@ -13,6 +13,10 @@ export type TSemester = {
   startMonth: string;
   endMonth: string;
 };
+export type TAcademicFaculty = {
+  _id: string;
+  name: string;
+};
 // export type TUserNotFound={
 //  error:{
 //   data:{

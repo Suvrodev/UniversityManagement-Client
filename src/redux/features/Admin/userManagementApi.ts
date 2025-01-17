@@ -11,7 +11,16 @@ const userManagementApi = baseApi.injectEndpoints({
         };
       },
     }),
+    getAllStudents: builder.query({
+      query: () => {
+        return {
+          url: "/students",
+          method: "GET",
+        };
+      },
+    }),
   }),
 });
 
-export const { useAddStudentMutation } = userManagementApi;
+export const { useAddStudentMutation, useGetAllStudentsQuery } =
+  userManagementApi;

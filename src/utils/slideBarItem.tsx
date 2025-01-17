@@ -42,6 +42,53 @@ export const getSideBarItems = (role: string) => {
       } `,
       children: [
         {
+          key: "CreateA.Semester",
+          label: (
+            <NavLink to={"/admin/create-academic-semester"}>
+              Create A.Semester
+            </NavLink>
+          ),
+        },
+
+        {
+          key: "3webe",
+          label: (
+            <NavLink to={"/admin/academic-semester"}>Academic Semester</NavLink>
+          ),
+        },
+        {
+          key: "CreateA.Faculty",
+          label: (
+            <NavLink to={"/admin/create-academic-faculty"}>
+              Create A.Faculty
+            </NavLink>
+          ),
+        },
+
+        {
+          key: "3websse",
+          label: (
+            <NavLink to={"/admin/academic-faculty"}>Academic Faculty</NavLink>
+          ),
+        },
+        {
+          key: "CreateA.Department",
+          label: (
+            <NavLink to={"/admin/create-academic-department"}>
+              Create A.Department
+            </NavLink>
+          ),
+        },
+
+        {
+          key: "3webes",
+          label: (
+            <NavLink to={"/admin/academic-semester"}>
+              Academic Department
+            </NavLink>
+          ),
+        },
+        {
           key: "3rta",
           label: <NavLink to={"/admin/create-admin"}>Create Admin</NavLink>,
         },
@@ -52,20 +99,6 @@ export const getSideBarItems = (role: string) => {
         {
           key: "3web",
           label: <NavLink to={"/admin/create-student"}>Create Student</NavLink>,
-        },
-        {
-          key: "3webe",
-          label: (
-            <NavLink to={"/admin/academic-semester"}>Academic Semester</NavLink>
-          ),
-        },
-        {
-          key: "3webwe",
-          label: (
-            <NavLink to={"/admin/create-academic-semester"}>
-              Academic Semester
-            </NavLink>
-          ),
         },
       ],
     },

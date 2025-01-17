@@ -1,0 +1,36 @@
+.inputBoxForCreateStudent {
+  background-color: transparent;
+  border: 1px solid rgb(168, 167, 167);
+  box-shadow: 1px 1px 5px silver;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  width: 100% !important;
+  outline: none;
+}
+
+.dateStyle {
+  width: 100%;
+}
+.react-date-picker__wrapper {
+  background-color: transparent;
+  border: 1px solid rgb(168, 167, 167);
+  box-shadow: 1px 1px 5px silver;
+  border-radius: 0.5rem;
+  padding: 0.3rem 1rem;
+  width: 100% !important;
+  outline: none;
+}
+
+.react-date-picker__inputGroup {
+  width: 100%;
+}
+/* @media only screen and (max-width: 768px) {
+  .inputBoxForCreateStudent {
+    width: 50%;
+  }
+}
+@media only screen and (max-width: 640px) {
+  .inputBoxForCreateStudent {
+    width: 100%;
+  }
+} */

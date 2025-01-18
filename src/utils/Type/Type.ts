@@ -17,6 +17,10 @@ export type TAcademicFaculty = {
   _id: string;
   name: string;
 };
+export type TDepartments = {
+  _id: string;
+  name: string;
+};
 // export type TUserNotFound={
 //  error:{
 //   data:{

@@ -7,6 +7,7 @@ const { Sider } = Layout;
 const Sidebar = () => {
   return (
     <Sider
+      className="max-h-fit"
       breakpoint="lg"
       collapsedWidth="0"
       onBreakpoint={(broken) => {

@@ -2,20 +2,13 @@ import { Layout } from "antd";
 
 const { Content } = Layout;
 
-// import {
-//   UploadOutlined,
-//   UserOutlined,
-//   VideoCameraOutlined,
-// } from "@ant-design/icons";
-// import { Children, createElement } from "react";
-// import { NavLink, Outlet } from "react-router";
 import { Outlet } from "react-router";
 import Sidebar from "./Sidebar/Sidebar";
 import Header from "../../Header/Header";
 
 const MainLayout = () => {
   return (
-    <Layout>
+    <Layout className="h-auto">
       {/* <Sider
         breakpoint="lg"
         collapsedWidth="0"
@@ -59,6 +52,9 @@ const MainLayout = () => {
         </Footer> */}
       </Layout>
     </Layout>
+    // <div>
+    //   <Outlet />
+    // </div>
   );
 };
 

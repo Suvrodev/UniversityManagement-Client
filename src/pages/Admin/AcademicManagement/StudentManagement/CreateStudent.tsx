@@ -130,7 +130,7 @@ const CreateStudent = () => {
     return <Loading />;
   }
   return (
-    <div>
+    <div style={{ height: "100vh" }} className="">
       <h1 className="text-xl font-bold">Create Students</h1>
 
       <div className="mt-6">
@@ -258,7 +258,7 @@ const CreateStudent = () => {
             <div>
               <p>Password</p>
               <input
-                type="password"
+                type="text"
                 name="password"
                 defaultValue="123456"
                 required

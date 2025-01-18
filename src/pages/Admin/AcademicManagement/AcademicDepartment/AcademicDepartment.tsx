@@ -1,10 +1,17 @@
 import Loading from "../../../../components/Loading/Loading";
 import { useGetAcademicDepartmentQuery } from "../../../../redux/features/Admin/AcademicManagementApi";
+import { setDepatment } from "../../../../redux/features/Admin/departmentSlice";
+import { useAppDispatch } from "../../../../redux/hooks";
+import { TDepartments } from "../../../../utils/Type/Type";
 
 const AcademicDepartment = () => {
   const { data, isLoading } = useGetAcademicDepartmentQuery(undefined);
+  const dispatch = useAppDispatch();
   const allDepartment = data?.data;
-  // console.log("All department: ", allDepartment);
+  console.log("All department: ", allDepartment);
+  if (allDepartment) {
+    dispatch(setDepatment(allDepartment));
+  }
 
   if (isLoading) {
     return <Loading />;
@@ -22,7 +29,7 @@ const AcademicDepartment = () => {
             </tr>
           </thead>
           <tbody>
-            {allDepartment.map((data: { name: string }, idx: number) => (
+            {allDepartment.map((data: TDepartments, idx: number) => (
               <tr key={idx}>
                 <th>{idx + 1}</th>
                 <td>{data?.name}</td>

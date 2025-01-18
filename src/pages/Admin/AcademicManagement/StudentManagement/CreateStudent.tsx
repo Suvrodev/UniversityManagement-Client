@@ -85,8 +85,8 @@ const CreateStudent = () => {
     }
 
     const formData = {
+      password: Form.password.value,
       student: {
-        Password: Form.password.value,
         admissionSemester,
         academicDepartment: admissionDepartment,
         name: {
@@ -118,7 +118,7 @@ const CreateStudent = () => {
         },
       },
     };
-    console.log("Data: ", formData);
+    console.log("Form Data: ", formData);
     toast.loading("Inserting student", { id: sonarId });
     const res = await add(formData).unwrap();
     if (res?.success) {

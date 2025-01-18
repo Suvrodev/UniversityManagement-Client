@@ -17,6 +17,7 @@ import AcademicFaculty from "../pages/Admin/AcademicManagement/AcademicFaculty/A
 import Loading from "../components/Loading/Loading";
 import GetStudents from "../pages/Admin/AcademicManagement/StudentManagement/GetStudents";
 import StudentDetail from "../pages/Admin/AcademicManagement/StudentManagement/StudentDetail/StudentDetail";
+import FormPage from "../components/layout/Suvrodeb/Formpage/FormPage";
 // import AdminLayout from "../components/layout/Admin/AdminLayout";
 
 export const router = createBrowserRouter([
@@ -31,6 +32,10 @@ export const router = createBrowserRouter([
       {
         path: "contact",
         element: <Contact />,
+      },
+      {
+        path: "form",
+        element: <FormPage />,
       },
     ],
   },

@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "./features/auth/authSlice";
 import departmentReducer from "./features/Admin/departmentSlice";
+import formReducer from "./features/MyForm/FormSlice";
 import { baseApi } from "./api/baseApi";
 import {
   persistStore,
@@ -25,6 +26,7 @@ export const store = configureStore({
   reducer: {
     auth: persistedAuthReducer,
     departments: departmentReducer,
+    suvrodeb: formReducer,
     [baseApi.reducerPath]: baseApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>

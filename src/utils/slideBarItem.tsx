@@ -81,7 +81,7 @@ const courseManagement = {
     {
       key: "SemesterRegistration",
       label: (
-        <NavLink to={"/admin/semester-regestration"}>
+        <NavLink to={"/admin/semester-registration"}>
           Semester Registration
         </NavLink>
       ),

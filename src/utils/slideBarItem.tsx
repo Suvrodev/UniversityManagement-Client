@@ -74,6 +74,42 @@ const userManagement = {
     },
   ],
 };
+const courseManagement = {
+  key: "CourseManagement",
+  label: "Course Management",
+  children: [
+    {
+      key: "SemesterRegistration",
+      label: (
+        <NavLink to={"/admin/semester-regestration"}>
+          Semester Registration
+        </NavLink>
+      ),
+    },
+    {
+      key: "regesteredSemester",
+      label: (
+        <NavLink to={"/admin/registered-semester"}>Regestered Semester</NavLink>
+      ),
+    },
+    {
+      key: "createCourse",
+      label: <NavLink to={"/admin/create-course"}>Create Course</NavLink>,
+    },
+    {
+      key: "courses",
+      label: <NavLink to={"/admin/create-course"}>Courses</NavLink>,
+    },
+    {
+      key: "offerCourse",
+      label: <NavLink to={"/admin/offer-course"}>Offer Course</NavLink>,
+    },
+    {
+      key: "offerdCourses",
+      label: <NavLink to={"/admin/offered-courses"}>Offered Courses</NavLink>,
+    },
+  ],
+};
 
 export const useGetSideBarItems = () => {
   const [role, setRole] = useState("admin");
@@ -82,6 +118,7 @@ export const useGetSideBarItems = () => {
   if (role == "admin") {
     restLebel.push(userManagement);
     restLebel.push(academicManagement);
+    restLebel.push(courseManagement);
   } else if (role == "student") {
     restLebel.push(academicManagement);
   }

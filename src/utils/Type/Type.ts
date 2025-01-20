@@ -21,11 +21,13 @@ export type TDepartments = {
   _id: string;
   name: string;
 };
-// export type TUserNotFound={
-//  error:{
-//   data:{
-//     err:object,
-//     errorSources:
-//   }
-//  }
-// }
+export type TRegisteredSemesterStatus = "UPCOMING" | "ENDED" | "ONGOING";
+export type TRegisteredSemester = {
+  academicSemester: TSemester;
+  startDate: string;
+  endDate: string;
+  maxCredit: number;
+  minCredit: number;
+  status: TRegisteredSemesterStatus;
+  _id: string;
+};

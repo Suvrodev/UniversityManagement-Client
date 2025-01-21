@@ -31,3 +31,9 @@ export type TRegisteredSemester = {
   status: TRegisteredSemesterStatus;
   _id: string;
 };
+
+export type TCourse = {
+  _id: string;
+  title: string;
+  code: number;
+};

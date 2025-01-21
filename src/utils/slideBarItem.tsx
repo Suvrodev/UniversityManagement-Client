@@ -98,7 +98,7 @@ const courseManagement = {
     },
     {
       key: "courses",
-      label: <NavLink to={"/admin/create-course"}>Courses</NavLink>,
+      label: <NavLink to={"/admin/courses"}>Courses</NavLink>,
     },
     {
       key: "offerCourse",
@@ -121,6 +121,8 @@ export const useGetSideBarItems = () => {
     restLebel.push(courseManagement);
   } else if (role == "student") {
     restLebel.push(academicManagement);
+  } else {
+    setRole("");
   }
 
   console.log("Ok");
